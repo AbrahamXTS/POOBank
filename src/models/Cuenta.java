@@ -1,28 +1,31 @@
 package models;
 
-import utilities.Utileria;
+import java.sql.ResultSet;
+
+import models.database.DB_query;
 
 public abstract class Cuenta {
+    private DB_query nube = new DB_query();
     
-    private String numeroDeCuenta;
-    private String numeroDeCliente;
+    private int numeroDeCuenta;
+    private int numeroDeCliente;
     private double saldo;
     
-    protected Cuenta(String numeroDeCliente) {
-        this.numeroDeCuenta = Utileria.generarId();
+    protected Cuenta(Integer numeroDeCliente) {
         this.numeroDeCliente = numeroDeCliente;
         this.saldo = 0;
+        this.numeroDeCuenta = nube.NuevaCuenta(numeroDeCliente);
     }
 
-    public String getNumeroDeCuenta() {
-        return numeroDeCuenta;
+    public ResultSet getCuentas(int IdCliente) { //no hay forma de encontrar la cuenta en especifica, devolvemos varias
+        return nube.CuentasPorCliente(IdCliente);
     }
 
-    public String getNumeroDeCliente() {
-        return numeroDeCliente;
+    public int getNumeroDeCliente(int no_cuenta) {
+        return nube.ClientePorCuenta(no_cuenta);
     }
 
-    public double getSaldo() {
-        return saldo;
+    public double getSaldo(int no_cuenta) {
+        return nube.ConsultaSaldo(no_cuenta);
     }
 }

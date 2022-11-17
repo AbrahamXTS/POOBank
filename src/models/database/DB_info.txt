@@ -1,0 +1,2 @@
+motor,server,puerto,base de datos, username,password
+mysql,sql9.freesqldatabase.com,3306,sql9553478,sql9553478,4vytjvI1Bb
