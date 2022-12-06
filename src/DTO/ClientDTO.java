@@ -1,70 +1,60 @@
 package DTO;
-import models.database.DB_query;
-import java.sql.ResultSet;
-/**
- * ClientDTO
- */
+
+import models.Cuenta;
+
 public class ClientDTO {
 
-    private DB_query nube = new DB_query();
+    private int ID;
+    private String Nombre;
+    private String Apellido;
+    private String Curp;
+    private Cuenta[] cuentas = new Cuenta[3];
+    private boolean Token;
 
-    private int Id;
-    private String nombre;
-    private String apellido;
-    private String CURP;
-
-    
-    // private Cuenta[] cuentas = new Cuenta[3];
-    private boolean tooken = false;
-
-    public ClientDTO(String nombre, String apellido, String CURP){
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.CURP = CURP;
-        //subimos al nuevo cliente y damos el nuevo id generado
-        this.Id = nube.NuevoCliente(nombre, apellido, CURP,tooken); 
+    public ClientDTO(int ID, String Nombre, String Apellido, String Curp){
+        this.ID = ID;
+        this.Nombre = Nombre;
+        this.Apellido = Apellido;
+        this.Curp = Curp;
+        this.Token = Token;
     }
 
-    public String getNombre() {
-        return nube.GetNombreCliente(Id);
+    public int getID(){
+        return ID;
+    }
+    public void setID(int ID){
+        this.ID = ID;
     }
 
-    public boolean setNombre(String nombre) {
-        boolean set = nube.SetNombreCliente(nombre,Id);
-        this.nombre = nombre;
-        return set;
+    public String getNombre(){
+        return Nombre;
     }
 
-    public String getApellido() {
-        return nube.GetApellidoCliente(Id);
+    public void setNombre(String Nombre){
+        this.Nombre = Nombre;
     }
 
-    public boolean setApellido(String Apellido) {
-        boolean set = nube.SetApellidoCliente(Apellido,Id);
-        this.apellido = Apellido;
-        return set;
+    public String getApellido(){
+        return Apellido;
     }
 
-    public String getCURP() {
-        return nube.GetCURPCliente(Id);
+    public void setApellido(String Apellido){
+        this.Apellido = Apellido;
     }
 
-    public boolean setCURP(String cURP) {
-        boolean set = nube.SetApellidoCliente(cURP,Id);
-        this.apellido = cURP;
-        return set;
+    public String getCurp(){
+        return Curp;
     }
 
-    public ResultSet getcuentas(int id){
-        return nube.CuentasPorCliente(id);
+    public void setCurp(String Curp){
+        this.Curp = Curp;
     }
 
-    public int getID() {
-        return Id;
+    public boolean getToken(){
+        return Token;
     }
 
-    public boolean gettokeen() {
-        return tooken;
+    public void setToken(boolean Token){
+        this.Token = Token;
     }
-    
 }

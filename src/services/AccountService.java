@@ -2,7 +2,7 @@ package services;
 
 import models.database.DB_query;
 import utilities.WrapperResponse;
-import DTO.AccountOneDTO;
+import DTO.AccountDTO;
 
 public class AccountService {
     

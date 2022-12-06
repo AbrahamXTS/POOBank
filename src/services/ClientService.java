@@ -23,7 +23,7 @@ public class ClientService {
         boolean added = false;
 
         try {
-            query.NuevoCliente(cdto.getNombre(), cdto.getApellido(), cdto.getCURP(),cdto.gettokeen());
+            query.NuevoCliente(cdto.getNombre(), cdto.getApellido(), cdto.getCurp(),cdto.getToken());
             ok = true;
             message = "Client added correctly";
             added = true;

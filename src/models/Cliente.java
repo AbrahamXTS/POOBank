@@ -20,7 +20,7 @@ public class Cliente {
         this.apellido = apellido;
         this.CURP = CURP;
         //subimos al nuevo cliente y damos el nuevo id generado
-        this.Id = nube.NuevoCliente(nombre, apellido, CURP,tooken); 
+        this.Id = nube.NuevoCliente(nombre, apellido, CURP, tooken); 
     }
 
     public String getNombre() {

@@ -2,7 +2,7 @@ package controllers;
 
 import services.AccountService;
 import utilities.WrapperResponse;
-import DTO.AccountOneDTO;
+import DTO.AccountDTO;
 
 public class AccountController {
            
