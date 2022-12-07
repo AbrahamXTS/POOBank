@@ -1,22 +1,21 @@
 package models;
 
-import java.sql.ResultSet;
+import java.util.List;
 
 public class Retiro extends Transaccion {
 
-    public Retiro(int numeroDeCuenta, double monto) {
-        super(numeroDeCuenta, monto);
-        boolean paso;
-        try {
-            paso = nube.GenerarRetiro(numeroDeCuenta, monto); //para obtener si paso o no el retiro
-            
-        } catch (Exception e) {
-            //mandar mensaje de que no tiene conexion
-        }
+    public Retiro(){}
+
+    public Retiro(int numeroDeCuenta, double monto, String Concepto) {
+        super(numeroDeCuenta, monto,Concepto);
+    }
+
+    public boolean SubirRetiro(){
+        return nube.RegistrarRetiro(numeroDeCuenta, monto, concepto);
     }
 
 
-    public ResultSet getRetiros(int no_Cuenta){
+    public List<Retiro> getRetiros(int no_Cuenta){
         return nube.DevolverRetirosPorCuenta(no_Cuenta);
     }
 }

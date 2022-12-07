@@ -1,21 +1,19 @@
 package models;
-
-import java.sql.ResultSet;
+import java.util.List;
 
 public class Deposito extends Transaccion {
 
+    public Deposito(){}
+
     public Deposito(int numeroDeCuenta, double monto, String concepto) {
-        super(numeroDeCuenta, monto);
-        try {
-            nube.GenerarDeposito(numeroDeCuenta, monto,concepto);
-            
-        } catch (Exception e) {
-            //mandar mensaje de que no tiene conexion
-        }
-    
+        super(numeroDeCuenta, monto,concepto);
     }
 
-    public ResultSet getDepositos(int no_Cuenta){
+    public boolean SubirDepositos(){
+        return nube.RegistrarDeposito(numeroDeCuenta, monto, concepto);
+    }
+
+    public List<Deposito> getDepositos(int no_Cuenta){
         return nube.DevolverDepositosPorCuenta(no_Cuenta);
     }
 }

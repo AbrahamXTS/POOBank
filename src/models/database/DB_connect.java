@@ -4,10 +4,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-
-
-
-
 /* */
 
 public class DB_connect {
@@ -32,7 +28,22 @@ public class DB_connect {
         this.password = parte[5];
     }
 
-    public Connection Generate_Connection(){
+    public Connection Principal_Connection(){
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver"); 
+            
+            red = (Connection)DriverManager.getConnection(("jdbc:" + motor + "://" + server + ":" + puerto + "/" + bd), username, password);
+
+            
+        } catch (Exception e) {
+            System.out.println(e);
+
+        }
+
+        return red;
+    }
+
+    public Connection Alter_Connection(){ // implementar datos de la bd alternativa
         try {
             Class.forName("com.mysql.cj.jdbc.Driver"); 
             

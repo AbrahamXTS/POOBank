@@ -11,14 +11,36 @@ public abstract class Transaccion {
     protected String fecha;
     protected double monto;
     protected int numeroDeCuenta;
+    protected String concepto;
 
     protected Transaccion() {  } //Constructor vacio
 
-    protected Transaccion(Integer numeroDeCuenta, double monto) {
+    protected Transaccion(Integer numeroDeCuenta, double monto, String Concepto) {
         this.fecha = Utileria.generarFecha();
         this.numeroDeCuenta = numeroDeCuenta;
         this.monto = monto;
+        this.concepto = Concepto;
     }
+
+    public void setId(int Id) {
+        this.id = Id;
+    }
+    
+    public void setfecha(String Fecha) {
+        this.fecha = Fecha;
+    } 
+
+    public void setmonto(double Monto) {
+        this.monto = Monto;
+    } 
+
+    public void setcuenta(int no_cuenta) {
+        this.numeroDeCuenta = no_cuenta;
+    } 
+
+    public void setConcepto(String Concepto) {
+        this.concepto = Concepto;
+    } 
 
     public int getId() {
         return id;
@@ -35,5 +57,9 @@ public abstract class Transaccion {
     public int getcuenta() {
         return numeroDeCuenta;
     } 
+
+    public String getConcepto() {
+        return concepto;
+    }
     
 }

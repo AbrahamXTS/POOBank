@@ -1,34 +1,33 @@
 package models;
 
 import java.sql.ResultSet;
+import java.util.List;
 
 public class Transferencia extends Transaccion {
     
     private int destino;
-    private String concepto;
 
     public Transferencia(){} // Constructor vacio
 
     public Transferencia(int numeroDeCuenta, int destino, double monto, String concepto) {
-        super(numeroDeCuenta, monto);
-        boolean paso;
-        try {
-            paso =nube.Generartransferencia(numeroDeCuenta,destino, monto,concepto); //usen el booleano para validar
-            
-        } catch (Exception e) {
-            //mandar mensaje de que no tiene conexion
-        }
+        super(numeroDeCuenta, monto, concepto);
     }
 
-    public ResultSet gettransferencias(int no_Cuenta){
+    public List<Transferencia> gettransferencias(int no_Cuenta){
         return nube.DevolverTransferenciaPorCuenta(no_Cuenta);
     }
+
+    public boolean SubirTransferencia(){
+        return nube.RegistrarTransferencia(numeroDeCuenta, destino, monto, concepto);
+    }
+
+    public void setDestino(int Destino) {
+        this.destino = Destino;
+    } 
+
 
     public int getDestino() {
         return destino;
     }
 
-    public String getConcepto() {
-        return concepto;
-    }
 }

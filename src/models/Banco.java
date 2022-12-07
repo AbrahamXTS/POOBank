@@ -1,14 +1,18 @@
 package models;
 
+import java.util.ArrayList;
+import java.util.List;
+
 class Banco {
 
     private String nombre;
-    private Cliente[] clientes = new Cliente[2];
+    private List<Cliente> clientes = new ArrayList<Cliente>();
 
     public Banco(String nombre) {
         this.nombre = nombre;
     }
 
+    
     public String getNombre() {
         return nombre;
     }
@@ -17,11 +21,11 @@ class Banco {
         this.nombre = nombre;
     }
 
-    public Cliente[] getClientes() {
+    public List<Cliente> getClientes() {
         return clientes;
     }
 
-    public void setClientes(Cliente[] clientes) {
-        this.clientes = clientes;
+    public void setClientes(List<Cliente> Clientes) {
+        this.clientes = Clientes;
     }
 }

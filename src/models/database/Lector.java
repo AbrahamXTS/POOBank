@@ -1,11 +1,8 @@
 package models.database;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
 import java.util.Scanner;
 
-import models.database.Cifrador;
 
 //Por el momento no usamos el cifrador
 public class Lector{
@@ -35,9 +32,12 @@ public class Lector{
         return Datos;
     }
 
+    /* 
     public static void main (String []args){
         Lector lec = new Lector();
         System.out.println(lec.getDatos());
     }
+    */
+
 
 }

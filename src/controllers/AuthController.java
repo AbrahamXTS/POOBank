@@ -3,22 +3,30 @@ package controllers;
 import DTO.*;
 import services.AuthService;
 import utilities.WrapperResponse;
-
+/**
+ * AuthController es una clase que se encarga de controlar el flujo de información 
+ * entre la vista y los servicios de cliente.
+ * @author Elias Madera
+ */
 public class AuthController {
 
 	private AuthService authService = new AuthService();
-	
-	// Aquí va el controlador de
-	// - Inicio de sesión
-	// - Registro de nuevo usuario
 
-	// Controlador: Lo unico que hace es llamar a un servicio. NO LLEVA IMPLEMENTACIÓN!!!
-	// EL SERVICIO ES EL QUE TIENE LA IMPLEMENTACIÓN!!!
-
-	// Todos los controladores deben retornar este tipo de dato (WrapperResponse) para tener estandarizadas las respuestas).
-	// El controlador retorna la llamada al método del servicio y el servicio es el encargado de responder el WrapperResponse
-
+	/**
+	 * Método que se encarga de controlar el login del cliente.
+	 * @param user Es un DTO cleinte.
+	 * @return Devuelve un LoginResponseDTO sobre el usuario.
+	 */
 	public WrapperResponse<LoginResponseDTO> login(LoginRequestDTO user) {
 		return authService.login(user);
+	}
+
+	/**
+	 * Método que se encarga de controlar el logout del cliente.
+	 * @param user Es un DTO cliente.
+	 * @return Devuelve un booleano sobre el logout del cliente.
+	 */
+	public WrapperResponse<Boolean> logout(LogoutRequestDTO user) {
+		return authService.logout(user);
 	}
 }

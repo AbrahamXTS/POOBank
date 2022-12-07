@@ -2,6 +2,8 @@ package models;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import models.database.DB_query;
 
@@ -12,58 +14,84 @@ public class Cliente {
     private String nombre;
     private String apellido;
     private String CURP;
-    private Cuenta[] cuentas = new Cuenta[3];
-    private boolean tooken = false;
+    private List<Cuenta> cuentas = new ArrayList<Cuenta>();
+    private String tooken = null;
+    private String Password = null;
 
-    public Cliente(String nombre, String apellido, String CURP){
+    public Cliente(){ } // utilizado para declararlo en los querys
+
+    public Cliente(String nombre, String apellido, String CURP, String password){
         this.nombre = nombre;
         this.apellido = apellido;
         this.CURP = CURP;
-        //subimos al nuevo cliente y damos el nuevo id generado
-        this.Id = nube.NuevoCliente(nombre, apellido, CURP, tooken); 
+        this.Password = password;
+        this.Id = nube.NuevoCliente(nombre, apellido, CURP,password,tooken); 
+    }
+
+    public boolean ActualizarCLiente (Cliente cliente){
+        return nube.ActualizarCliente(cliente); //devuelve un mensaje de aprovacion o rechazo.
+    }
+
+    public boolean EliminarCLiente (Cliente cliente){
+        return nube.EliminarCliente(Id); //devuelve un mensaje de aprovacion o rechazo.
     }
 
     public String getNombre() {
-        return nube.GetNombreCliente(Id);
+        return nombre;
     }
 
     public boolean setNombre(String nombre) {
-        boolean set = nube.SetNombreCliente(nombre,Id);
         this.nombre = nombre;
-        return set;
+        return true;
     }
 
     public String getApellido() {
-        return nube.GetApellidoCliente(Id);
+        return apellido;
     }
 
     public boolean setApellido(String Apellido) {
-        boolean set = nube.SetApellidoCliente(Apellido,Id);
         this.apellido = Apellido;
-        return set;
+        return true;
     }
 
     public String getCURP() {
-        return nube.GetCURPCliente(Id);
+        return CURP;
     }
 
     public boolean setCURP(String cURP) {
-        boolean set = nube.SetApellidoCliente(cURP,Id);
         this.apellido = cURP;
-        return set;
+        return true;
     }
 
-    public ResultSet getcuentas(int id){
-        return nube.CuentasPorCliente(id);
+    public String getPassword(){
+        return Password;
+    }
+
+    public boolean setPassword(String pass){ 
+        this.Password = pass;
+        return true;
+    }
+
+    public List<Cuenta> getcuentas(){
+        return cuentas;
+    }
+
+    public void setID(int id) {
+        this.Id = id;
     }
 
     public int getID() {
         return Id;
     }
 
-    public boolean gettokeen() {
+    public void setToken(String Token) {
+        this.tooken = Token;
+    }
+
+    public String gettoken() {
         return tooken;
     }
+
 
     /*
 
