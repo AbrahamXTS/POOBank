@@ -25,7 +25,6 @@ public class Cliente {
         this.apellido = apellido;
         this.CURP = CURP;
         this.Password = password;
-        //subimos al nuevo cliente y damos el nuevo id generado
         this.Id = nube.NuevoCliente(nombre, apellido, CURP,password,tooken); 
     }
 
